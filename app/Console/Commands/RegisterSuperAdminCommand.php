@@ -12,7 +12,7 @@ class RegisterSuperAdminCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'app:register-super-admin-command';
+    protected $signature = 'register:super-admin';
 
     /**
      * The console command description.
@@ -45,6 +45,7 @@ class RegisterSuperAdminCommand extends Command
     {
         $details['name'] = $this->ask('Name');
         $details['email'] = $this->ask('Email');
+        $details['username'] = $this->ask('Username');
         $details['password'] = $this->secret('Password');
         $details['confirm_password'] = $this->secret('Confirm password');
 
