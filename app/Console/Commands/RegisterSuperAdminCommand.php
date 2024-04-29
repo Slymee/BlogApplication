@@ -89,6 +89,7 @@ class RegisterSuperAdminCommand extends Command
      * Display created admin.
      *
      * @param array $admin
+     * 
      * @return void
      */
     private function display(User $admin) : void
@@ -110,6 +111,7 @@ class RegisterSuperAdminCommand extends Command
      *
      * @param string $password
      * @param string $confirmPassword
+     * 
      * @return boolean
      */
     private function isValidPassword(string $password, string $confirmPassword) : bool
@@ -123,6 +125,7 @@ class RegisterSuperAdminCommand extends Command
      *
      * @param string $password
      * @param string $confirmPassword
+     * 
      * @return bool
      */
     private function isMatch(string $password, string $confirmPassword) : bool
@@ -134,6 +137,7 @@ class RegisterSuperAdminCommand extends Command
      * Checks if password is longer than six characters.
      *
      * @param string $password
+     * 
      * @return bool
      */
     private function isRequiredLength(string $password) : bool
