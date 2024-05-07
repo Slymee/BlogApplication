@@ -13,8 +13,9 @@
     <input type="checkbox" id="check">
     <div class="login form">
       <header>Login</header>
-      <form action="{{ route('login') }}" method="post">
-        <input type="text" placeholder="Enter your email or username" name="username_or_email" value="">
+      <form action="{{ route('user-login') }}" method="post">
+        @csrf
+        <input type="text" placeholder="Enter your email or username" name="username_or_email" value="{{ old('username_or_email') }}">
         <input type="password" placeholder="Enter your password" name="password">
         <a href="#">Forgot password?</a>
         <input type="submit" class="button" value="Login">
@@ -25,7 +26,7 @@
 
             @if($errors->any())
                 @foreach ($errors->all() as $error)
-                    {{ $error}} <br>
+                    {{ $error }} <br>
                 @endforeach                    
             @endif
         </span>
@@ -40,9 +41,9 @@
       <header>Signup</header>
       <form action="{{ route('user-register') }}" method="post">
         @csrf
-        <input type="text" placeholder="Enter your name" name="name" id="" value="">
-        <input type="text" placeholder="Enter your username" name="username" id="" value="">
-        <input type="text" placeholder="Enter your email" name="email" value="">
+        <input type="text" placeholder="Enter your name" name="name" id="" value="{{ old('name') }}">
+        <input type="text" placeholder="Enter your username" name="username" id="" value="{{ old('username') }}">
+        <input type="text" placeholder="Enter your email" name="email" value="{{ old('email') }}">
         <input type="password" placeholder="Create a password" name="password">
         <input type="password" placeholder="Confirm your password" name="password_confirmation">
         <input type="submit" class="button" value="Signup">

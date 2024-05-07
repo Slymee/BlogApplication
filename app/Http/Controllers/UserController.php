@@ -34,13 +34,14 @@ class UserController extends Controller
      */
     public function create(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
+
         return view('login-register');
     }
 
     
         
     /**
-     * Store User Credentials
+     * Store/Register User Credentials
      *
      * @param  mixed $request
      * @return Illuminate\Http\RedirectResponse
