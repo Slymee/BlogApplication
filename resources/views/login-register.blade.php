@@ -40,8 +40,9 @@
       <header>Signup</header>
       <form action="{{ route('user-register') }}" method="post">
         @csrf
-        <input type="text" placeholder="Enter your username" name="username" id="" value="<?php if(isset($_SESSION['registerUsername'])) echo $_SESSION['registerUsername']; ?>">
-        <input type="text" placeholder="Enter your email" name="email" value="<?php if(isset($_SESSION['registerEmail'])) echo $_SESSION['registerEmail']; ?>">
+        <input type="text" placeholder="Enter your name" name="name" id="" value="">
+        <input type="text" placeholder="Enter your username" name="username" id="" value="">
+        <input type="text" placeholder="Enter your email" name="email" value="">
         <input type="password" placeholder="Create a password" name="password">
         <input type="password" placeholder="Confirm your password" name="password_confirmation">
         <input type="submit" class="button" value="Signup">

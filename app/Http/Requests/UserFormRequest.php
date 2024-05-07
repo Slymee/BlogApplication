@@ -26,6 +26,7 @@ class UserFormRequest extends FormRequest
 
         if($routeName = 'user-register'){
             return [
+                'name' => ['required', 'bail', 'string', 'max:255'],
                 'username' => ['required', 'bail', 'string', 'max:255', 'unique:users'],
                 'email' => ['required', 'bail', 'email', 'string', 'max:255', 'unique:users'],
                 'password' => [

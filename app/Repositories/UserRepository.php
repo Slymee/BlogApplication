@@ -11,6 +11,7 @@ class UserRepository implements UserRepositoryInterface
     public function create(array $data)
     {
         User::create([
+            'name' => $data['name'],
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => $data['password'],
