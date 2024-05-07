@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserFormRequest;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -34,7 +33,6 @@ class UserController extends Controller
      */
     public function create(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
-
         return view('login-register');
     }
 

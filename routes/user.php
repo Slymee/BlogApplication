@@ -5,7 +5,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 //User Login and Register
-Route::get('login-register', [UserController::class, 'create'])->name('login')->middleware('guest');
+Route::get('login-register', [LoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('register', [UserController::class, 'store'])->name('user-register')->middleware('guest');
 
 Route::post('login', [LoginController::class, 'login'])->name('user-login');
