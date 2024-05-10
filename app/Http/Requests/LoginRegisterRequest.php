@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserFormRequest extends FormRequest
+class LoginRegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,9 @@ class UserFormRequest extends FormRequest
      */
     public function rules(): array
     {
-        $routeName = $this->route()->getName();
 
-        if($routeName = 'user-register'){
+        $routeName = $this->route()->getName();
+        if($routeName == 'user-register'){
             return [
                 'name' => ['required', 'bail', 'string', 'max:255'],
                 'username' => ['required', 'bail', 'string', 'max:255', 'unique:users'],

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserFormRequest;
+use App\Http\Requests\LoginRegisterRequest;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        dd("Logged In");
     }
 
     
@@ -44,7 +44,7 @@ class UserController extends Controller
      * @param  mixed $request
      * @return Illuminate\Http\RedirectResponse
      */
-    public function store(UserFormRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(LoginRegisterRequest $request): \Illuminate\Http\RedirectResponse
     {
         try{
             $this->userRepository->create($request->validated());
@@ -85,5 +85,10 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function random()
+    {
+        return "Just a random page!!";
     }
 }

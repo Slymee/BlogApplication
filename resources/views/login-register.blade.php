@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./Resources/css/login-register.css">
   @vite('resources/css/login-register.css')
-  <title>Login & Registration Form</title>
+  <title>Login & Registration</title>
 </head>
 <body>
   <div class="container">

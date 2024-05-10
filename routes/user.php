@@ -12,5 +12,6 @@ Route::post('login', [LoginController::class, 'login'])->name('user-login');
 
 //User Application Routes
 Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/', [LoginController::class, ''])->name('home');
+    Route::get('/', [UserController::class, 'index'])->name('home');
+    Route::get('random-route', [UserController::class,'random'])->name('random');
 });
