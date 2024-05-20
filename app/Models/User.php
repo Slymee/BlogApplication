@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -20,6 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'username',
         'password',
     ];
 
@@ -42,4 +44,43 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
+    /**
+     * Check if user is super admin
+     *
+     * @return bool
+     */
+    public function isSuperAdmin() : bool
+    {
+        return (bool) $this->is_super_admin();
+    }
+    
+    /**
+     * Create super admin
+     *
+     * @param  mixed $details
+     * @return self
+     */
+    public function createSuperAdmin(array $details) : self
+    {
+        $user = new self($details);
+
+        if(! $this->superAdminExists()){
+            $user->is_super_admin = 1;
+        }
+
+        $user->save();
+
+        return $user;
+    }
+    
+    /**
+     * Check super admin exist
+     *
+     * @return int
+     */
+    public function superAdminExists() : int
+    {
+        return self::where('is_super_admin', 1)->count();
+    }
 }
