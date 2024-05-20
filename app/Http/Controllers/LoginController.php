@@ -4,16 +4,13 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRegisterRequest;
-use App\Models\User;
-use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Services\AuthService;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
     private $authService;
-    
+
     /**
      * __construct
      *
@@ -26,9 +23,8 @@ class LoginController extends Controller
     }
 
     /**
-     * Login and Register Form
-     *
-     * @return Illuminate\Contracts\View\View
+     * User Login/Register form
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function showLoginForm(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
@@ -36,7 +32,12 @@ class LoginController extends Controller
         return view('login-register');
     }
 
-    public function login(LoginRegisterRequest $request)
+    /**
+     * Login Module
+     * @param LoginRegisterRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function login(LoginRegisterRequest $request): \Illuminate\Http\RedirectResponse
     {
         if($this->checkUsernameOrEmail($request->username_or_email)){
             $credentials = ['email' => $request->username_or_email, 'password' => $request->password];
@@ -45,7 +46,7 @@ class LoginController extends Controller
                 return redirect()->intended();
             }
 
-            // return $this->authService->login($credentials) ? redirect()->intended() : 
+            // return $this->authService->login($credentials) ? redirect()->intended() :
             //         redirect()->back()->with('message', 'Invalid Credentials!');
         }
 
@@ -55,22 +56,21 @@ class LoginController extends Controller
             return redirect()->intended();
         }
 
-        // return $this->authService->login($credentials) ? redirect()->intended() : 
+        // return $this->authService->login($credentials) ? redirect()->intended() :
         //         redirect()->back()->with('message', 'Invalid Credentials!');
 
         return redirect()->back()->with('message', 'Invalid Credentials!');
     }
-    
+
     /**
-     * Check if email or username
-     *
-     * @param  mixed $usernameOrEmail
-     * @return void
+     * Check the input is email or not
+     * @param $usernameOrEmail
+     * @return mixed
      */
-    public function checkUsernameOrEmail($usernameOrEmail)
+    public function checkUsernameOrEmail($usernameOrEmail): mixed
     {
         return filter_var($usernameOrEmail, FILTER_VALIDATE_EMAIL);
     }
 
-    
+
 }
