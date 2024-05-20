@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 class RoleMiddleware
 {
     /**
-     * Handle an incoming request.
+     * Handle role detection request
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
